@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="421" pageHeight="595" columnWidth="381" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="invo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     ventes_produits.`id` AS ventes_produits_id,
+     ventes_produits.`ventes_id` AS ventes_produits_ventes_id,
+     ventes_produits.`nomM` AS ventes_produits_nomM,
+     ventes_produits.`prix` AS ventes_produits_prix,
+     ventes_produits.`qty` AS ventes_produits_qty,
+     ventes_produits.`total` AS ventes_produits_total,
+     ventes.`id` AS ventes_id,
+     ventes.`subtotal` AS ventes_subtotal,
+     ventes.`pay` AS ventes_pay,
+     ventes.`bal` AS ventes_bal
+FROM
+     `ventes_produits` ventes_produits INNER JOIN `ventes` ventes ON ventes_produits.`ventes_id` = ventes.`id`
+WHERE
+     ventes.`id` = $P{invo}]]>
+	</queryString>
+	<field name="ventes_produits_id" class="java.lang.Integer"/>
+	<field name="ventes_produits_ventes_id" class="java.lang.Integer"/>
+	<field name="ventes_produits_nomM" class="java.lang.String"/>
+	<field name="ventes_produits_prix" class="java.lang.Integer"/>
+	<field name="ventes_produits_qty" class="java.lang.Integer"/>
+	<field name="ventes_produits_total" class="java.lang.Integer"/>
+	<field name="ventes_id" class="java.lang.Integer"/>
+	<field name="ventes_subtotal" class="java.lang.Integer"/>
+	<field name="ventes_pay" class="java.lang.Integer"/>
+	<field name="ventes_bal" class="java.lang.Integer"/>
+	<group name="sales">
+		<groupFooter>
+			<band height="50"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="159" splitType="Stretch">
+			<image>
+				<reportElement x="10" y="0" width="117" height="146" />
+				<imageExpression><![CDATA["C:\\Users\\X\\Documents\\Nouveau dossier\\JavaApplication\\src\\image\\pharmacie2.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="127" y="52" width="240" height="45" />
+				<textElement textAlignment="Center">
+					<font fontName="Broadway" size="34"/>
+				</textElement>
+				<text><![CDATA[Pharmacie]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="266" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="31" width="135" height="20" />
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nom du médicament]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="165" y="31" width="52" height="20" />
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Prix]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="228" y="31" width="52" height="20" />
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Quantité ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="307" y="31" width="52" height="20" />
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<line>
+				<reportElement x="10" y="123" width="349" height="1" />
+				<graphicElement>
+					<pen lineWidth="1.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="307" y="158" width="35" height="20" />
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ventes_subtotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="307" y="192" width="35" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ventes_pay}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="307" y="226" width="35" height="20" />
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ventes_bal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="207" y="158" width="83" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Prix Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="207" y="192" width="55" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montant ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="207" y="226" width="55" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Balance ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="10" y="65" width="135" height="20" />
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ventes_produits_nomM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="165" y="65" width="52" height="20" />
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ventes_produits_prix}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="228" y="65" width="52" height="20" />
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ventes_produits_qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="307" y="65" width="52" height="20" />
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ventes_produits_total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
